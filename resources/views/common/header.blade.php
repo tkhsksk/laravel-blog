@@ -26,5 +26,14 @@
             </div>
         </div>
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger mt-2 small" role="alert">
+        <ul class="error-list mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </header>
 @endsection

@@ -15,10 +15,11 @@ class Post extends Model
     protected $guarded = [];
 
     const RULES = [
-        'title'     => ['required', 'string', 'max:255'],
-        'body'      => ['required', 'string', 'max:65535'],
-        'image'     => ['nullable', 'mimes:jpg,jpeg,png', 'max:500'],
-        'caption'   => ['nullable', 'string', 'max:255'],
-        'posted_at' => ['nullable', 'date'],
+        'title'         => ['required', 'string', 'max:255'],
+        'body'          => ['required', 'string', 'max:65535'],
+        'image'         => ['nullable', 'mimes:jpg,jpeg,png,webp', 'max:500'],
+        'image_deleted' => ['required', 'boolean'],
+        'caption'       => ['nullable', 'string', 'max:255'],
+        'posted_at'     => ['nullable', 'date'],
     ];
 }

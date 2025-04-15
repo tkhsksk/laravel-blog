@@ -5,13 +5,6 @@
 @include('common.header')
 @section('contents')
 <main>
-    @if ($errors->any())
-        <ul class="error-list">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
     <form action="{{ route('post.confirm') }}" enctype="multipart/form-data" novalidate="novalidate" method="post" class="border-top pt-3 mt-3">
         @csrf
         <div class="d-flex justify-content-end">
@@ -20,8 +13,22 @@
         <input type="hidden" name="id" value="{{ $post ? old('id',$post->id) : old('id') }}">
         <input type="text" name="title" value="{{ $post ? old('title',$post->title) : old('title') }}" class="form-control mb-3">
         <textarea name="body" rows="4">{{ $post ? old('body',$post->body) : old('body') }}</textarea>
+
+        <div class="form-check">
+            <input type="hidden" name="image_deleted" value="0">
+            <input id="image_deleted" class="form-check-input" type="checkbox" name="image_deleted" value="1" {{ old('image_deleted', $post->image_deleted ?? 0) ? 'checked' : '' }}>
+            <label class="form-check-label" for="image_deleted">画像を削除する</label>
+        </div>
+
         @isset($post)
-            {!! $post->image ? '<div class="text-center"><img style="max-height:300px;max-width: 300px;" class="img-fluid object-fit-cover my-3 w-100" src=/storage/'.$post->image.'></div>' : '' !!}
+            <div class="text-center mb-3">
+            {!! $post->image ? '<img style="max-width: 300px;max-height: 300px;" class="img-fluid object-fit-contain mt-3 w-100" src=/storage/'.$post->image.'>' : '<input type="file" name="image" class="mt-3">' !!}
+            </div>
+            @isset($post->image)
+                <div class="text-center mb-3">
+                    <input type="file" name="image">
+                </div>
+            @endisset
         @else
             <input type="file" name="image">
         @endisset

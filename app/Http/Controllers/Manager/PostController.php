@@ -25,10 +25,16 @@ class PostController extends Controller
         $inputs = $request->all();
 
         $path = $request->file('image') ? $imageUploadService->upload($request->file('image'), 'temp') : '';
+        $post = null;
+
+        if ($request->filled('id')) {
+            $post = Post::find($request->id); // or findOrFail($request->id) でもOK
+        }
 
         return view('manager.post.confirm', [
             'inputs' => $inputs,
             'path'   => $path,
+            'post'   => $post,
         ]);
     }
 

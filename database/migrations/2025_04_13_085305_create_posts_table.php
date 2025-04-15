@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title')->comment('タイトル');
             $table->longText('body')->comment('テキスト');
             $table->string('image')->comment('画像')->nullable();
+            $table->boolean('image_deleted')->comment('画像削除フラグ')->default(false);
             $table->string('caption')->comment('画像キャプション')->nullable();
             $table->date('posted_at')->comment('表示年月日')->nullable();
             $table->timestamps();
