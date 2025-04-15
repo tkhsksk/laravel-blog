@@ -1,6 +1,6 @@
 @extends('common.layout')
 
-@section('title','ダッシュボード')
+@section('title','ダッシュボードpushテスト')
 @include('common.head')
 @include('common.header')
 @section('contents')
