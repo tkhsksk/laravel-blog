@@ -12,7 +12,7 @@
             @endforeach
         </ul>
     @endif
-    <form action="{{ route('post.confirm') }}" enctype="multipart/form-data" novalidate="novalidate" method="post">
+    <form action="{{ route('post.confirm') }}" enctype="multipart/form-data" novalidate="novalidate" method="post" class="border-top pt-3 mt-3">
         @csrf
         <input type="hidden" name="id" value="{{ $post ? old('id',$post->id) : old('id') }}">
         <input type="text" name="title" value="{{ $post ? old('title',$post->title) : old('title') }}" class="form-control mb-3">
@@ -20,7 +20,9 @@
         <input type="file" name="image">
         <input type="text" name="caption" value="{{ $post ? old('caption',$post->caption) : old('caption') }}" class="form-control mb-3">
         <input type="date" name="posted_at" value="{{ $post ? old('posted_at',$post->posted_at) : old('posted_at') }}" class="form-control mb-3">
-        <button type="submit">confirm</button>
+        <div class="text-end">
+            <button type="submit" class="btn btn-light">confirm</button>
+        </div>
     </form>
 </main>
 @endsection

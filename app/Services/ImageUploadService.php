@@ -15,7 +15,6 @@ class ImageUploadService
      * @param string $directory 保存先ディレクトリ (storage/app/public/ 以下)
      * @return string 保存されたファイルのパス
      */
-    error
     public function upload(UploadedFile $file, string $directory = 'uploads'): string
     {
         // ランダムなファイル名を生成
