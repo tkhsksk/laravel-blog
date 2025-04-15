@@ -18,7 +18,7 @@ class Post extends Model
         'title'     => ['required', 'string', 'max:255'],
         'body'      => ['required', 'string', 'max:65535'],
         'image'     => ['nullable', 'mimes:jpg,jpeg,png', 'max:500'],
-        'caption'   => ['required', 'string', 'max:255'],
+        'caption'   => ['nullable', 'string', 'max:255'],
         'posted_at' => ['nullable', 'date'],
     ];
 }

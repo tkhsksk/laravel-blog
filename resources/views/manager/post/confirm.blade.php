@@ -1,5 +1,8 @@
 @extends('common.layout')
+
+@section('title','ポストの確認')
 @include('common.head')
+@include('common.header')
 @section('contents')
 <main>
     @if ($errors->any())
@@ -9,20 +12,36 @@
             @endforeach
         </ul>
     @endif
+    <div class="border-top pt-3 mt-3">
+        <article class="border-start ps-4 py-3 mb-5">
+            <div class="d-flex justify-content-between mb-5 pt-3">
+                <h2 class="main mb-0 h6">@empty($inputs['id'])<span class="num pe-2 text-danger small fw-bold">new</span>@endempty<span class="title">#@isset($inputs['id']){{ $inputs['id'] }}@endisset：{{ $inputs['title'] }}</span></h2>
+                <h3 class="date mb-0 small text-black-50">{{ \Carbon\Carbon::parse($inputs['posted_at'])->format('Y.m.d') }}</h3>
+            </div>
+            <div id="confirm-body">{!! $inputs['body'] !!}</div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <img src="/storage/{{ $path }}" class="w-100">
+                </div>
+            </div>
+            <p class="text-black-50"><span class="small">{{ $inputs['caption'] }}</span></p>
+        </article>
+    </div>
+
     <form action="{{ route('post.store') }}" enctype="multipart/form-data" novalidate="novalidate" method="post">
         @csrf
+
         <input type="hidden" name="id" value="@isset($inputs['id']){{ $inputs['id'] }}@endisset">
-        <p class="mb-0">{{ $inputs['title'] }}</p>
         <input type="hidden" name="title" value="{{ $inputs['title'] }}">
-        <p class="mb-0">{{ $inputs['body'] }}</p>
+        
         <input type="hidden" name="body" value="{{ $inputs['body'] }}">
-        <img src="/storage/{{ $path }}">
         <input type="hidden" name="image" value="{{ $path }}">
-        <p class="mb-0">{{ $inputs['caption'] }}</p>
+
         <input type="hidden" name="caption" value="{{ $inputs['caption'] }}">
-        <p class="mb-0">{{ $inputs['posted_at'] }}</p>
         <input type="hidden" name="posted_at" value="{{ $inputs['posted_at'] }}">
-        <button type="submit">store</button>
+        <div class="text-end">
+            <button type="submit" class="btn btn-light">store</button>
+        </div>
     </form>
 </main>
 @endsection

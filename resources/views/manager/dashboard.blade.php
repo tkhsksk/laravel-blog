@@ -21,10 +21,10 @@
     <tr>
         <td>{{ $post->id }}</td>
         <!-- <td>{{ $post->created_at }}</td> -->
-        <td>{{ $post->posted_at }}</td>
+        <td>{{ \Carbon\Carbon::parse($post->posted_at)->format('Y/m/d') }}</td>
         <td>{{ $post->title }}</td>
-        <td><img src="/storage/{{ $post->image }}" style="height:30px;width: 30px;" class="img-fluid object-fit-cover"></td>
-        <td>{{ $post->caption }}</td>
+        <td><a href="/storage/{{ $post->image }}" target="_blank"><img src="/storage/{{ $post->image }}" style="height:30px;width: 30px;" class="img-fluid object-fit-cover"></a></td>
+        <td class="small">{{ $post->caption }}</td>
         <td><a href="{{ route('post.edit', $post->id) }}">編集</a></td>
     </tr>
     @endforeach
