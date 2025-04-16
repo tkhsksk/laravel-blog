@@ -22,7 +22,6 @@ class ImageUploadService
 
         // 保存（public ディスク）
         $path = $file->storeAs($directory, $filename, 'public');
-        dd($path);
         dd($file);
 
         return $path;
