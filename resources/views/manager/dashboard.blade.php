@@ -20,7 +20,7 @@
     <tbody>
     @foreach($posts as $post)
     <tr>
-        <td>{{ $post->id }}</td>
+        <td><a href="{{ route('post.edit', $post->id) }}">{{ $post->id }}</a></td>
         <!-- <td>{{ $post->created_at }}</td> -->
         <td>{{ \Carbon\Carbon::parse($post->posted_at)->format('Y/m/d') }}</td>
         <td>{{ $post->title }}</td>
