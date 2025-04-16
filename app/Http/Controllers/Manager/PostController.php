@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Services\ImageUploadService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -23,8 +25,10 @@ class PostController extends Controller
     {
         $this->check($request);
         $inputs = $request->all();
+        $user = Auth::user();
+        $userId = $user->id;
 
-        $path = $request->file('image') ? $imageUploadService->upload($request->file('image'), 'temp') : '';
+        $path = $request->file('image') ? $imageUploadService->upload($request->file('image'), 'temp/'.$userId) : '';
         $post = null;
 
         if ($request->filled('id')) {
@@ -44,6 +48,19 @@ class PostController extends Controller
 
         $post = new Post();
         $inputs = $request->all();
+        $user = Auth::user();
+        $userId = $user->id;
+
+        $sourcePath = $request->image;
+        $destinationPath = basename($request->image);
+
+        // 画像inputがあればファイル移動
+        if ($sourcePath)
+            $moved = Storage::disk('public')->move($sourcePath, $destinationPath);
+
+        if ($moved)
+            $files = Storage::disk('public')->files('temp/'.$userId);
+            Storage::disk('public')->delete($files);
 
         $post = Post::updateOrCreate(
             ['id' => $request->id],

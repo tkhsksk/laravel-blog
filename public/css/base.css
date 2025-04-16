@@ -1,3 +1,121 @@
+#home main {
+    padding: 98px 0px;
+}
+
+#home header {
+    font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+    width: 250px;
+    height: 266px;
+    background: black;
+    color: white;
+    position: relative;
+    transform: scale(0.6);
+}
+
+#home header h1 {
+    font-weight: bold;
+    font-size: 41px;
+    font-feature-settings: "palt";
+}
+
+#home header h1 span {
+    position: absolute;
+}
+
+#home header h1 span:nth-child(1) {
+    left: -8px;
+    top: -10px;
+    font-size: 96px;
+}
+
+#home header h1 span:nth-child(2) {
+    left: 64px;
+    top: 43px;
+    font-size: 60px;
+}
+
+#home header h1 span:nth-child(3) {
+    left: 103px;
+    top: 32px;
+    font-size: 56px;
+    transform: rotate(-3deg);
+}
+
+#home header h1 span:nth-child(4) {
+    left: 147px;
+    top: 28px;
+    font-size: 51px;
+}
+
+#home header h1 span:nth-child(5) {
+    left: 179px;
+    top: 25px;
+    font-size: 59px;
+}
+
+#home header h1 span:nth-child(6) {
+    right: -3px;
+    top: 43px;
+    font-size: 50px;
+}
+
+#home header h1 span:nth-child(7) {
+    left: 16px;
+    top: 97px;
+    font-size: 43px;
+}
+
+#home header h1 span:nth-child(8) {
+    left: 104px;
+    top: 85px;
+    font-size: 54px;
+}
+
+#home header h1 span:nth-child(9) {
+    right: -12px;
+    top: 102px;
+    font-size: 58px;
+}
+
+#home header p:nth-child(2) {
+    position: absolute;
+    bottom: 69px;
+    left: 30px;
+    font-size: 21px;
+    color: black;
+    background: white;
+    line-height: 1;
+    padding: 9px 24px;
+    font-family: auto;
+    margin: 0;
+    transform: rotate(-5deg);
+}
+
+#home header p:nth-child(3) {
+    position: absolute;
+    bottom: 29px;
+    left: 41px;
+    font-size: 31px;
+    color: black;
+    background: white;
+    line-height: 1;
+    padding: 7px 19px;
+    font-family: auto;
+    margin: 0;
+    font-weight: bold;
+    transform: rotate(-4deg);
+}
+
+#home article {
+    background: rgba(255, 255, 255, .77);
+    z-index: 2;
+    position: relative;
+}
+
 #confirm-body p {
     font-size: 13px;
+}
+
+.signin-form{
+    max-width: 460px;
 }

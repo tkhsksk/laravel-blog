@@ -1,43 +1,25 @@
-<!-- resources/views/auth/login.blade.php -->
+@extends('common.layout_login')
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログイン</title>
-</head>
-<body>
-    <h1>ログイン</h1>
-
-    <!-- ログインフォーム -->
-    <form action="{{ route('login') }}" method="POST">
-        @csrf
-
-        <!-- メールアドレス -->
-        <div>
-            <label for="email">メールアドレス:</label>
-            <input type="email" name="email" id="email" required>
+@section('title','ログイン')
+@include('common.head')
+@section('contents')
+<main class="d-flex justify-content-center">
+    <div class="signin-form w-100">
+        <h2 class="form-title fw-bold mb-4">@yield('title')</h2>
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="email" class="form-label">メールアドレス</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">パスワード</label>
+                <input type="password" class="form-control" name="password" id="password" required>
+            </div>
+            <div class="text-end">
+            <button type="submit" class="btn">ログイン</button>
         </div>
-
-        <!-- パスワード -->
-        <div>
-            <label for="password">パスワード:</label>
-            <input type="password" name="password" id="password" required>
-        </div>
-
-        <button type="submit">ログイン</button>
-    </form>
-
-    <!-- エラーメッセージ -->
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-</body>
-</html>
+        </form>
+    </div>
+</main>
+@endsection
