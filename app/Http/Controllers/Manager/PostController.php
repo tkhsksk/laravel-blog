@@ -57,9 +57,10 @@ class PostController extends Controller
         // 画像inputがあればファイル移動
         $moved = $sourcePath ? Storage::disk('public')->move($sourcePath, $destinationPath) : '';
 
-        if ($moved)
+        if ($moved){
             $files = Storage::disk('public')->files('temp/'.$userId);
             Storage::disk('public')->delete($files);
+        }
 
         $post = Post::updateOrCreate(
             ['id' => $request->id],
