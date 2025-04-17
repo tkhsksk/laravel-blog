@@ -8,7 +8,7 @@
 <article class="border-start ps-4 py-3 mb-5">
     <div class="d-flex justify-content-between mb-5 pt-3">
         <h2 class="main mb-0 h6">@if ($post->id === \App\Models\Post::max('id'))<span class="num pe-2 text-danger small fw-bold">new</span>@endif<span class="title">#{{ getNumberAttribute($post->id) }}：{{ $post->title }}</span></h2>
-        <h3 class="date mb-0 small text-black-50">{{ \Carbon\Carbon::parse($post->posted_at)->format('Y.m.d') }}</h3>
+        <h3 class="date mb-0 small text-black-50 ms-3">{{ \Carbon\Carbon::parse($post->posted_at)->format('Y.m.d') }}</h3>
     </div>
     <div id="confirm-body" class="txt-limit">{!! $post->body !!}</div>
     @isset($post->image)
