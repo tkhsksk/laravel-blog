@@ -14,39 +14,44 @@
                     <h3 class="date mb-0 small text-black-50">{{ \Carbon\Carbon::parse($inputs['posted_at'])->format('Y.m.d') }}</h3>
                 </div>
                 <div id="confirm-body">{!! $inputs['body'] !!}</div>
+                <!-- 画像削除にチェックが入っていない場合 -->
                 @if($inputs['image_deleted'] == 0)
+                    <!-- 画像inputがある場合 -->
                     @isset($inputs['image'])
                     <div class="row">
                         <div class="col-6 mb-3">
                             <img src="/storage/{{ $path }}" class="w-100">
                         </div>
                     </div>
-                        @isset($inputs['caption'])
-                            <p class="text-black-50"><span class="small">{{ $inputs['caption'] }}</span></p>
-                        @endisset
                     <input type="hidden" name="image" value="{{ $path }}">
+                    <!-- 画像inputがない場合 -->
                     @else
+                        <!-- 既存情報を編集している場合 -->
                         @isset($post)
+                            <!-- 画像inputがある場合 -->
                             @isset($post->image)
                             <div class="row">
                                 <div class="col-6 mb-3">
                                     <img src="{{imagePath($post->image)}}" class="w-100">
                                 </div>
                             </div>
+                            <!-- 画像削除にチェックが入っている場合 -->
                             @if($inputs['image_deleted'] == 1)
                                 <input type="hidden" name="image" value="">
+                            <!-- 画像削除にチェックが入っていない場合 -->
                             @else
                                 <input type="hidden" name="image" value="{{ imagePath($post->image) }}">
                             @endif
-                                @isset($inputs['caption'])
-                                    <p class="text-black-50"><span class="small">{{ $inputs['caption'] }}</span></p>
-                                @endisset
                             @endisset
                         @endisset
                     @endisset
+                <!-- 画像削除にチェックが入っている場合 -->
                 @else
                     <input type="hidden" name="image" value="">
                 @endif
+                @isset($inputs['caption'])
+                    <p class="text-black-50"><span class="small">{{ $inputs['caption'] }}</span></p>
+                @endisset
             </article>
         </div>
         <input type="hidden" name="image_deleted" value="0">
