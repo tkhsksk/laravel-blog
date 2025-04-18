@@ -7,7 +7,7 @@
 	<meta property="og:description" content="ポスト記事"/>
 	<meta property="og:site_name" content="{{ config('app.name') }}"/>
 	@isset($post->image)
-		<meta property="og:image" content="{{ route('home') }}{{ $post->image }}"/>
+		<meta property="og:image" content="{{ route('home') }}{{ imagePath($post->image) }}"/>
 	@endisset
 @endif
 <meta name="viewport" content="width=device-width, initial-scale=1">
