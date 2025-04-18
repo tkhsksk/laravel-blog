@@ -3,8 +3,8 @@
 @if(Request::routeIs('post.detail'))
 	<meta property="og:url" content="{{ route('post.detail', $post->id) }}"/>
 	<meta property="og:type" content="blog"/>
-	<meta property="og:title" content="{{ $post->title }}"/>
-	<meta property="og:description" content="ポスト記事"/>
+	<meta property="og:title" content="#{{ getNumberAttribute($post->id) }}：{{ $post->title }}"/>
+	<meta property="og:description" content="{{ config('app.name') }}"/>
 	<meta property="og:site_name" content="{{ config('app.name') }}"/>
 	@isset($post->image)
 		<meta property="og:image" content="{{ route('home') }}{{ imagePath($post->image) }}"/>
