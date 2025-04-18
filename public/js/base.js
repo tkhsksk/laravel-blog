@@ -9,7 +9,7 @@ tinymce.init({
     plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
     toolbar: 'blocks bold align underline forecolor | emoticons link image table hr | numlist bullist | code codeblock',
     block_formats: 'Paragraph=p; Header 1=h3; Header 2=h4; Header 3=h5',
-    height:300,
+    height:500,
 });
 
 
